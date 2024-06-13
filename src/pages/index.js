@@ -45,7 +45,6 @@ const Home = ({ configData, landingPageData }) => {
 export default Home
 
 export const getServerSideProps = async (context) => {
-    console.log('context', context)
     const { req } = context
     const language = req.cookies.languageSetting
     const configRes = await fetch(
@@ -60,7 +59,9 @@ export const getServerSideProps = async (context) => {
             },
         }
     )
+
     const config = await configRes.json()
+    // let config
     const landingPageRes = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/landing-page`,
         {

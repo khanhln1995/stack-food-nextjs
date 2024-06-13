@@ -8,13 +8,13 @@ import {
 import { useStoreFcm } from './hooks/react-query/push-notification/usePushNotification'
 
 const firebaseConfig = {
-    measurementId: '',
-    apiKey: 'AIzaSyAbWvwUvcSXjiN4XqFbQnjC84MIxXc_Bhw',
-    authDomain: 'test-dmhieu.firebaseapp.com',
-    projectId: 'test-dmhieu',
-    storageBucket: 'test-dmhieu.appspot.com',
-    messagingSenderId: '232386985329',
-    appId: '1:232386985329:web:e70bedb9ef281de1dbcad0',
+    apiKey: 'AIzaSyD6K_945qqKtjNlziJiPVqYYlOjI2WdmUQ',
+    authDomain: 'shopmart-7bb63.firebaseapp.com',
+    projectId: 'shopmart-7bb63',
+    storageBucket: 'shopmart-7bb63.appspot.com',
+    messagingSenderId: '676933188534',
+    appId: '1:676933188534:web:35f921e4d3fb295146df17',
+    measurementId: 'G-YKR8MT0R1Z',
 }
 const firebaseApp = !getApps().length ? initializeApp(firebaseConfig) : getApp()
 const messaging = (async () => {
@@ -32,7 +32,8 @@ const messaging = (async () => {
 
 export const fetchToken = async (setTokenFound, setFcmToken) => {
     return getToken(await messaging, {
-        vapidKey: '',
+        vapidKey:
+            'BIEpliQ-rvsUWTMgPp_g4rGN5EqD-l0MpT4uHa2ByuWYO_v9xr1ZE_HhothZtdoNyU8GZ8TCDl_nOKHyX9typEw',
     })
         .then((currentToken) => {
             if (currentToken) {
