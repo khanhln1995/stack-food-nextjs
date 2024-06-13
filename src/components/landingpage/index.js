@@ -21,10 +21,13 @@ const LandingPage = (props) => {
     const [zoneid, setZoneid] = useState(null)
     const dispatch = useDispatch()
     const { landingPageData } = useSelector((state) => state.storedData)
-    useEffect(async () => {
-        if (typeof window !== 'undefined') {
-            setZoneid(JSON.parse(localStorage.getItem('zoneid')))
+    useEffect(() => {
+        async function fetchData() {
+            if (typeof window !== 'undefined') {
+                setZoneid(JSON.parse(localStorage.getItem('zoneid')))
+            }
         }
+        fetchData()
     }, [])
 
     let token = undefined
@@ -39,8 +42,16 @@ const LandingPage = (props) => {
 
     const { data, refetch, isLoading } = useGetLandingPageData(onSuccessHandler)
     useEffect(() => {
-        refetch()
-    }, [])
+        const onSuccessHandler = (res) => {
+            dispatch(setLandingPageData(res))
+        }
+
+        const fetchData = async () => {
+            await refetch()
+        }
+
+        fetchData()
+    }, [refetch, dispatch])
     //   const { data: guestData, refetch: guestRefetch } = useGetGuest();
     //   useEffect(() => {
     //     if (!token) {
@@ -75,7 +86,7 @@ const LandingPage = (props) => {
             <FunFactSection
                 global={global}
                 react_feature={landingPageData?.react_services}
-                isLoading={isLoading}
+isLoading={isLoading}
                 fun_base_url={
                     landingPageData?.base_urls?.react_services_image_url
                 }
