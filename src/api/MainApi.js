@@ -14,6 +14,7 @@ const MainApi = axios.create({
     baseURL: baseUrl,
 })
 
+
 // MainApi.interceptors.request.use(function (config) {
 //     let zoneId = undefined
 //     let token = undefined
@@ -21,6 +22,7 @@ const MainApi = axios.create({
 //     let currentLocation = undefined
 //     let software_id = 33571750
 //     let hostname = process.env.NEXT_CLIENT_HOST_URL
+
 
 //     if (typeof window !== 'undefined') {
 //         zoneId = localStorage.getItem('zoneid')

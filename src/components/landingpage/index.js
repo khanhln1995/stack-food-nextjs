@@ -86,7 +86,7 @@ const LandingPage = (props) => {
             <FunFactSection
                 global={global}
                 react_feature={landingPageData?.react_services}
-                isLoading={isLoading}
+isLoading={isLoading}
                 fun_base_url={
                     landingPageData?.base_urls?.react_services_image_url
                 }
